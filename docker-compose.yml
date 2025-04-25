@@ -1,3 +1,4 @@
+version: "3.8"
 services:
   prometheus:
     image: prom/prometheus
@@ -10,6 +11,7 @@ services:
     volumes:
       - ./prometheus:/etc/prometheus
       - prom_data:/prometheus
+
   grafana:
     image: grafana/grafana
     container_name: grafana
@@ -21,5 +23,8 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=grafana
     volumes:
       - ./grafana:/etc/grafana/provisioning/datasources
+      - grafana_data:/var/lib/grafana
+
 volumes:
   prom_data:
+  grafana_data:
